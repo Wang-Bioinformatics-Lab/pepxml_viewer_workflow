@@ -1,5 +1,5 @@
-workflowname: template_nextflow_workflow
-workflowdescription: template_nextflow_workflow
+workflowname: pepxml_viewer_workflow
+workflowdescription: pepxml_viewer_workflow
 workflowlongdescription: This is a template nextflow workflow for GNPS2
 workflowversion: "0.1"
 workflowfile: nf_workflow.nf
@@ -10,7 +10,7 @@ parameterlist:
     - displayname: File Selection
       paramtype: section
 
-    - displayname: Input Data Folder
+    - displayname: Input Spectra Folder
       paramtype: fileselector
       nf_paramname: input_spectra_folder
       formplaceholder: Enter the path to data
@@ -18,4 +18,14 @@ parameterlist:
       targettaskfolder: input_spectra
       optional: false
       selectsinglefile: false
+      folderunroll: true
+
+     - displayname: Input pepXML File
+      paramtype: fileselector
+      nf_paramname: input_pepxml_file
+      formplaceholder: Enter the path to data
+      formvalue: ""
+      targettaskfolder: input_pepxml_file
+      optional: false
+      selectsinglefile: true
       folderunroll: true
