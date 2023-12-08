@@ -20,7 +20,7 @@ parameterlist:
       selectsinglefile: false
       folderunroll: true
 
-     - displayname: Input pepXML File
+    - displayname: Input pepXML File
       paramtype: fileselector
       nf_paramname: input_pepxml_file
       formplaceholder: Enter the path to data
