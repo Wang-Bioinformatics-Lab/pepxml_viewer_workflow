@@ -29,6 +29,7 @@ def main():
         output_dict["start_scan"] = spectrum_query["@start_scan"]
         output_dict["end_scan"] = spectrum_query["@end_scan"]
         output_dict["retention_time"] = spectrum_query["@retention_time_sec"]
+        output_dict["assumed_charge"] = spectrum_query["@assumed_charge"]
 
         # Getting the peptide ID
         search_result = spectrum_query["search_result"]
@@ -36,6 +37,15 @@ def main():
 
         output_dict["peptide"] = search_hit["@peptide"]
         output_dict["massdiff"] = search_hit["@massdiff"]
+
+        # Trying to get the score
+        try:
+            search_scores = search_hit["search_score"]
+            for search_score in search_scores:
+                if search_score["@name"] == "hyperscore":
+                    output_dict["hyperscore"] = search_score["@value"]
+        except:
+            pass
 
         try:
             # Getting the ptm result

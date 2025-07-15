@@ -1,19 +1,33 @@
 name: pepxml_viewer_workflow
 displayname: STUFF
 Views:
--   name: Summary List
-    displayname: Summary List
+-   name: PepXML Summary List
+    displayname: PepXML Summary List
     viewname: summarylist
     displaytype: datatable
     parameters:
-        filename: output/summary.tsv
+        filename: nf_output/output.tsv
         columns:
             -   title: "View LCMS"
                 data: filename
-            -   title: "filename"
-                data: filename
+            -   title: "query_filename"
+                data: query_filename
+            -   title: "start_scan"
+                data: start_scan
+            -   title: "peptide"
+                data: peptide
+            -   title: "assumed_charge"
+                data: assumed_charge
+            -   title: "retention_time"
+                data: retention_time
+            -   title: "ptm_mass"
+                data: ptm_mass
+            -   title: "localization_peptide"
+                data: localization_peptide
+            -   title: "hyperscore"
+                data: hyperscore
         columnDefs: '[ {"targets": 0,"data": null,"render": function ( data, type, row, meta ) {
             return `
-            <a target="_blank" href="/dashboards/lcms?usi=mzspec:GNPS2-${task}:${encodeURIComponent(row["filename"])}">View LCMS - mzspec:GNPS2-${task}:${row["filename"]}</a>
+                <a target="_blank" href="https://metabolomics-usi.gnps2.org/dashinterface/?usi1=mzspec:GNPS2:TASK-${task}-input_spectra/${row["query_filename"]}:scan:${row["start_scan"]}">View Spectrum</a>
             `;}}]'
             
